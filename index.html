@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reel</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root {
+    --bg: #121212;
+    --panel: #1a1a1a;
+    --text: #EDEAE4;
+    --dim: #8a8a86;
+    --accent: #5FC9C1;
+    --frame: #333330;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    min-height: 100vh;
+    padding: 24px 16px 64px;
+  }
+
+  header {
+    max-width: 640px;
+    margin: 0 auto 32px;
+    padding-top: 12px;
+  }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .eyebrow::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .sub {
+    color: var(--dim);
+    font-size: 14px;
+    margin-top: 6px;
+  }
+
+  main {
+    max-width: 640px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .clip {
+    position: relative;
+    background: var(--panel);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  /* viewfinder corner brackets */
+  .clip::before, .clip::after,
+  .clip .bracket-tr, .clip .bracket-bl {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--accent);
+    z-index: 2;
+    opacity: 0.85;
+    pointer-events: none;
+  }
+  .clip::before { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+  .clip::after { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+  .clip .bracket-tr { top: 10px; right: 10px; border-left: none; border-bottom: none; }
+  .clip .bracket-bl { bottom: 10px; left: 10px; border-right: none; border-top: none; }
+
+  video {
+    width: 100%;
+    display: block;
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
+    background: #000;
+  }
+
+  .caption {
+    padding: 12px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--dim);
+    border-top: 1px solid var(--frame);
+  }
+
+  .caption .index { color: var(--accent); }
+
+  .empty-state {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--dim);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    border: 1px dashed var(--frame);
+    border-radius: 4px;
+  }
+
+  .empty-state strong {
+    display: block;
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  footer {
+    max-width: 640px;
+    margin: 40px auto 0;
+    text-align: center;
+    color: var(--frame);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Scanned in</div>
+  <h1>Reel</h1>
+  <div class="sub">A few clips, straight from a scan.</div>
+</header>
+
+<main id="gallery">
+  <div class="clip">
+    <span class="bracket-tr"></span><span class="bracket-bl"></span>
+    <video controls playsinline preload="metadata" poster="">
+      <source src="videos/video1.mp4" type="video/mp4">
+      Your browser can't play this video.
+    </video>
+    <div class="caption">
+      <span class="index">01</span>
+      <span>video1.mp4</span>
+    </div>
+  </div>
+
+  <div class="clip">
+    <span class="bracket-tr"></span><span class="bracket-bl"></span>
+    <video controls playsinline preload="metadata" poster="">
+      <source src="videos/video2.mp4" type="video/mp4">
+      Your browser can't play this video.
+    </video>
+    <div class="caption">
+      <span class="index">02</span>
+      <span>video2.mp4</span>
+    </div>
+  </div>
+
+  <div class="clip">
+    <span class="bracket-tr"></span><span class="bracket-bl"></span>
+    <video controls playsinline preload="metadata" poster="">
+      <source src="videos/video3.mp4" type="video/mp4">
+      Your browser can't play this video.
+    </video>
+    <div class="caption">
+      <span class="index">03</span>
+      <span>video3.mp4</span>
+    </div>
+  </div>
+
+  <div class="clip">
+    <span class="bracket-tr"></span><span class="bracket-bl"></span>
+    <video controls playsinline preload="metadata" poster="">
+      <source src="videos/video4.mp4" type="video/mp4">
+      Your browser can't play this video.
+    </video>
+    <div class="caption">
+      <span class="index">04</span>
+      <span>video4.mp4</span>
+    </div>
+  </div>
+
+  <div class="clip">
+    <span class="bracket-tr"></span><span class="bracket-bl"></span>
+    <video controls playsinline preload="metadata" poster="">
+      <source src="videos/video5.mp4" type="video/mp4">
+      Your browser can't play this video.
+    </video>
+    <div class="caption">
+      <span class="index">05</span>
+      <span>video5.mp4</span>
+    </div>
+  </div>
+
+  <div class="clip">
+    <span class="bracket-tr"></span><span class="bracket-bl"></span>
+    <video controls playsinline preload="metadata" poster="">
+      <source src="videos/video6.mp4" type="video/mp4">
+      Your browser can't play this video.
+    </video>
+    <div class="caption">
+      <span class="index">06</span>
+      <span>video6.mp4</span>
+    </div>
+  </div>
+
+  <div class="clip">
+    <span class="bracket-tr"></span><span class="bracket-bl"></span>
+    <video controls playsinline preload="metadata" poster="">
+      <source src="videos/video7.mp4" type="video/mp4">
+      Your browser can't play this video.
+    </video>
+    <div class="caption">
+      <span class="index">07</span>
+      <span>video7.mp4</span>
+    </div>
+  </div>
+
+  <div class="clip">
+    <span class="bracket-tr"></span><span class="bracket-bl"></span>
+    <video controls playsinline preload="metadata" poster="">
+      <source src="videos/video8.mp4" type="video/mp4">
+      Your browser can't play this video.
+    </video>
+    <div class="caption">
+      <span class="index">08</span>
+      <span>video8.mp4</span>
+    </div>
+  </div>
+
+  <div class="clip">
+    <span class="bracket-tr"></span><span class="bracket-bl"></span>
+    <video controls playsinline preload="metadata" poster="">
+      <source src="videos/video9.mp4" type="video/mp4">
+      Your browser can't play this video.
+    </video>
+    <div class="caption">
+      <span class="index">09</span>
+      <span>video9.mp4</span>
+    </div>
+  </div>
+
+</main>
+
+<footer>made to be scanned</footer>
+
+</body>
+</html>
